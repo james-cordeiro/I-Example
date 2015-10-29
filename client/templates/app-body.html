@@ -1,0 +1,147 @@
+<head>
+  <title>Inpelo</title>
+</head>
+
+<template name="parent">
+    {{#if currentUser}}
+    	{{> UI.dynamic template=currentUser.profile.userType }}
+    {{else}}
+    	{{> notLoggedIn}}
+    {{/if}}
+</template>
+
+<template name="candidate">
+    <!-- navbar -->
+  <div class="navbar navbar-fixed-top navbar-default">
+    <div class = "container">
+      <a href="{{pathFor route = 'home'}}" class="navbar-brand">Inpelo</a>
+
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="{{pathFor route = 'profilePageCandidate'}}" class="js-candidate-myProfile">myProfile</a></li>
+          <li><a href="{{pathFor route = 'interestsPageCandidate'}}" class="js-stack-candidate">interests</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor route = 'home'}}" class="js-logout ">log out</a></li>
+          <li><a href="{{pathFor route = 'feedback'}}">sendFeedback</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- end of navbar -->
+<div class="main">
+  {{> yield}} 
+</div>
+</template>
+
+
+
+<template name="company">
+
+    <!-- navbar -->
+  <div class="navbar navbar-fixed-top navbar-default">
+    <div class = "container">
+      <a href="{{pathFor route = 'home'}}" class="navbar-brand">Inpelo</a>
+
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="{{pathFor route = 'interestsPageCompany'}}" class="js-stack-company">interests</a></li>
+            <li><a href="{{pathFor route = 'profilePageCompany'}}" class="js-profile-company">ourProfile</a></li>
+            <li><a href="{{pathFor route = 'createJob'}}" class="js-create-job">CreateJob</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor route = 'home'}}" class="js-logout ">log out</a></li>
+          <li><a href="{{pathFor route = 'feedback'}}">sendFeedback</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- end of navbar -->
+<div class="main">
+  {{> yield}} 
+</div>
+</template>
+
+
+
+
+<template name="notLoggedIn">
+<!-- navbar -->
+  <div class="navbar navbar-fixed-top navbar-default">
+    <div class = "container">
+      <a href="{{pathFor route = 'home'}}" class="navbar-brand">Inpelo</a>
+
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor route = 'join'}}">join</a></li>
+          <li><a href="{{pathFor route = 'login'}}">log in</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- end of navbar -->
+<div class="main">
+  {{> yield}} 
+</div>
+</template>
+
+
+
+<template name="masterAdmin">
+    <!-- navbar -->
+  <div class="navbar navbar-fixed-top navbar-default">
+    <div class = "container">
+      <a href="{{pathFor route = 'home'}}" class="navbar-brand">InpeloAdmin</a>
+
+      <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="{{pathFor route = 'feedbackRecieved'}}">feedback</a></li
+          >
+          <li><a href="{{pathFor route = 'userProfiles'}}">userProfiles</a></li
+          >
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor route = 'home'}}" class="js-logout ">log out</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <!-- end of navbar -->
+<div class="main">
+  {{> yield}} 
+</div>
+
+</template>

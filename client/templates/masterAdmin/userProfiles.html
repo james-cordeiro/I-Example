@@ -1,0 +1,131 @@
+<template name="userProfiles">
+{{#if Template.subscriptionsReady}}
+
+
+	<div class="container">
+
+	  <div class="row">
+	    <div class="col-md-12 col-lg-12">
+        <!-- tabs -->
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li><a href="#userTypesCandidate" data-toggle="tab">candidates</a></li>
+            <li><a href="#userTypesCompany" data-toggle="tab">companies</a></li>
+          </ul>
+
+          <!-- greets tab content -->
+          <div class="tab-content">
+            <div class="tab-pane" id="userTypesCandidate">
+              
+              {{> usersCandidates}}
+
+            </div> <!-- end greets tab content -->
+
+
+            <div class="tab-pane" id="userTypesCompany">
+              {{> usersCompany}}
+            </div>
+
+        </div>
+        <!-- /tabs -->
+    </div>
+  </div><!-- /row -->
+</div>
+</div>
+
+
+
+{{else}}
+Loading...
+{{/if}}
+</template>
+
+
+
+
+
+
+<template name="usersCandidates">
+<h4>{{candidateCount}} users</h4>
+
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-left">
+
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+
+              <div class="tabbable tabs-left">
+                  <ul class="nav nav-tabs">
+                  {{#each usersCandidates}}
+                        <li id="name"><a href="#" data-toggle="tab">{{profile.firstName}} {{profile.lastName}}</a></li>
+                  {{/each}}
+                  </ul>
+              </div>
+
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+
+
+      <!-- main -->
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-left visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+
+        {{#with singleCanUserDisplay}}
+
+
+	        {{> profileCandidateMapped}}
+
+        {{/with}}
+
+      </div><!--/.col-xs-12.col-sm-9-->
+
+    </div><!--/row row-offcanvas-->
+  </div><!--/.container-->
+</template>
+
+
+
+
+
+
+<template name="usersCompany">
+
+<h4>{{companyCount}} users</h4>
+
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-left">
+
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="list-group">
+
+              <div class="tabbable tabs-left">
+                  <ul class="nav nav-tabs">
+                  {{#each usersCompany}}
+                        <li id="name"><a href="#" data-toggle="tab"> {{profile.firstName}} {{profile.lastName}}</a></li>
+                  {{/each}}
+                  </ul>
+              </div>
+
+        </div>
+      </div><!--/.sidebar-offcanvas-->
+
+
+      <!-- main -->
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-left visible-xs">
+          <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+
+        {{#with singleComUserDisplay}}
+
+          {{> profileCompany}}
+
+        {{/with}}
+
+      </div><!--/.col-xs-12.col-sm-9-->
+
+    </div><!--/row row-offcanvas-->
+  </div><!--/.container-->
+</template>

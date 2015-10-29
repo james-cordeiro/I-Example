@@ -1,0 +1,239 @@
+<template name="interestsPageCompany">
+{{#if Template.subscriptionsReady}}
+<div class="container">
+	<div class="row">
+		<div class="dropdown">
+  			<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">Select your published job</button>
+          <ul class="dropdown-menu" role="menu">
+          {{#each jobsCreated}}
+              <li class="jobsCreatedList"><a href="#">{{title}}</a></li>
+              {{/each}}
+          </ul>
+      </div>
+        <h5><strong>{{slctdJobPubl}}</strong></h5>
+	</div>
+
+
+
+	<div class="row">
+		<span>
+			<button type="button" class="joinTypeGreets btn btn-default btn-sm"> greets </button>
+			<button type="button" class="joinTypeHandshakes btn btn-default btn-sm">handshakes</button>
+		</span>
+	</div>
+</div>
+
+
+<div class="row-offcanvas row-offcanvas-left">
+
+  <div id="sidebar" class="sidebar-offcanvas">
+    <div class="col-md-12">
+      <ul class="nav nav-pills nav-stacked">
+        {{#each docList}} 
+        <li class="greet-items-default "><a href="#" class="name {{_id}} ellipsis {{attenBackground closed handShake scopeCompleted}}">{{candidate_name}} <div class="badge "></div></a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  
+  <div id="main">
+      <div class="col-md-12">
+        <div class="visible-xs">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        </div>
+      <!-- switch dynamic depending if greets or handshake buttnc clicked -->
+      {{> layoutTemplate}}
+      </div>
+  </div>
+
+</div><!--/row-offcanvas -->
+
+
+{{else}}
+Loading...
+{{/if}}
+</template>
+
+
+
+<template name="greetsTemplate">
+{{#with greetFocused}}
+{{#with candidateProfileFocusedJoin}}
+  <div class="row">
+    <div class="col-sm-6">{{> personalAndSpeciality}}</div>
+    <div class="col-sm-4 col-sm-offset-2">
+        <h5>Greeted <strong>{{formatTimeAgo createdAt false}}</strong></h5>
+        {{#if this.closed}}
+        <h5>Declined {{whoClosed this.closedBy}}<strong> {{formatTimeAgo closedAt false}}</strong></h5>
+
+        <button id="deleteGreet" type="buton" class="btn btn-default btn-sm">delete <i class="fa fa-times"></i></button> <!-- removes document -->
+        {{else}}
+        <button id="handshake" type="buton" class="btn btn-default btn-sm">handshake <i class="fa fa-check"></i></button> <br/><br/>
+        
+        <button id="closeGreet" type="buton" class="btn btn-default btn-sm">Respectfully decline <i class="fa fa-times"></i></button>
+        {{/if}}
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    {{> candidateViewFlat}}
+    </div>
+  </div>
+
+
+{{/with}}
+{{/with}}
+</template>
+
+
+
+
+
+<template name="handshakesTemplate">
+{{#with handshakeFocused}}
+{{#with candidateProfileFocusedJoinHS}}
+
+
+  <div class="row">
+    <div class="col-sm-4">{{> personalAndSpeciality}}</div>
+    <div class="col-sm-4">
+      {{> chatBoxCOM}} 
+    </div>
+    <div class="col-sm-4">
+      <h5>Handshaked <strong>{{formatTimeAgo handShakeAt false}}</strong></h5>
+      {{#if this.closed}}
+      <h5>Declined {{whoClosed closedBy}}<strong> {{formatTimeAgo closedAt false}}</strong></h5>
+      <button id="deleteGreet" type="buton" class="btn btn-default btn-sm">delete <i class="fa fa-times"></i></button> <!-- removes document -->
+      {{else}}
+      <button id="closeGreet" type="button" class="btn btn-default btn-sm">Respectfully decline <i class="fa fa-times"></i></button>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{#if this.scopeCompleted}}
+        {{> accordianScopeInstance}}
+      {{else}}
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h5 class="text-center">SCOPE <i class="fa fa-envelope-o"></i><strong> not yet recieved</strong></h5>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    {{> candidateViewFlat}}
+    </div>
+  </div>
+
+
+{{/with}}
+{{/with}}
+</template>
+
+
+<template name="accordianScopeInstance"> <!-- goes inside handshakeCOM -->
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingScopeInstance">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
+        <h5 class="text-center">SCOPE RECIEVED <i class="fa fa-envelope"></i><strong> {{formatTimeAgo scopeCompletedAt false}}</strong></h5>
+
+        </a>
+      </h4>
+    </div>
+
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingScopeInstance">
+      <div class="panel-body">
+        {{> scopeInstance}}
+      </div>
+    </div>
+  </div>
+
+</div>
+</template>
+
+
+<template name="scopeInstance"> 
+  {{#each scopeInstance}}
+    <div>
+      <p>{{text}}</p>
+      <p>
+        <sup><i class="fa fa-quote-left"></i></sup>
+        {{response}}
+        <sup><i class="fa fa-quote-right"></i></sup>
+      </p>
+      <hr>
+    </div>
+  {{/each}}
+</template>
+
+
+
+
+
+<template name="candidateViewFlat">
+  <div class="content">
+  <h5>Positions</h5> 
+    {{> positions}}
+  </div>
+  <div class="content">
+  <h5>Education</h5>
+    {{> educations}}
+  </div>
+  <div class="content">
+    <h5>Languages</h5>
+    {{> languages}}
+  </div>
+  <div class="content">
+  <h5>Books</h5>
+    {{> booksView}}
+  </div>
+</template>
+
+
+<template name="booksView">
+  {{#each booksFocused}}
+    {{> bookItem}}
+  {{/each}}
+</template>
+
+
+<template name="plainTemplate">
+plain
+</template>
+
+
+
+
+<template name="chatBoxCOM">
+  <div class="chat-box-div">
+      <div class="chat-box-head">
+        chat
+      </div>
+      <div id="chat-box-main" class="chat-box-main">
+      {{#each messages}}
+          <div class="message-box">
+          <small>{{name}} <i class="faint-text">{{formatTimeAgo createdAt false}}</i></small> <br />
+          {{text}}
+          </div>
+        {{/each}}
+      </div>
+      <div class="chat-box-footer">
+          <div class="input-group">
+              <input id="message" type="text" class="form-control">
+              <span class="input-group-btn">
+                  <button id="sendMessage" class="btn btn-match" type="button">send</button>
+              </span>
+          </div>
+      </div>
+  </div>
+</template>

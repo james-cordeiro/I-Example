@@ -1,0 +1,40 @@
+.hr-clas {
+    border-top: 1px solid #D8D8D8;
+}
+
+.chat-box-div {
+    border:1px solid #e7e3da;
+    border-bottom:1px solid #e7e3da;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    max-width: 250px;
+} 
+.chat-box-head {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #e7e3da;
+    text-align: center;
+}
+
+.chat-box-main {
+    overflow-x: hidden;
+    height:150px;
+    overflow: auto;
+    padding-bottom: 60px;
+}
+
+.message-box {
+    padding: 10px 20px 10px 20px;
+    margin: 10px 5px 10px 5px;
+    border-radius: 10px;
+    background-color: #f6efd8;
+
+}
+button.btn-match {
+    background-color: #e7e3da;
+}
+.chat-box-footer {
+    background-color: #e7e3da;
+    padding: 0px;
+    margin: 0px;
+}

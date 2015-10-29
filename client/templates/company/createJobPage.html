@@ -1,0 +1,284 @@
+<template name="createJob">
+<div class="container">
+    {{> createJobPost}}
+</div>
+</template>
+
+
+
+<template name="createJobPost">
+
+<form class="form-horizontal" role="form" id="jobcreate">
+
+	<div class="form-group form-group-md" >
+    	<label class="col-sm-2 control-label" for="title" >Job Title:</label>
+    	
+        <div class="col-sm-10">
+
+            <div class="content">
+                <input class="title form-control" value="{{title}}" type="text" maxlength="50" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="sector">sector</label>
+        
+        <div class="col-sm-10">
+            <div class="content">
+            <div class="searchfield">
+
+                <select class="sector form-control" name="sector">
+                    <option selected="{{sector}}">{{sector}}</option>
+                    <option value="Accountancy, banking and finance">Accountancy, banking and finance</option>
+                    <option value="Business, consulting and management">Business, consulting and management</option>
+                    <option value="Charity and voluntary work">Charity and voluntary work</option>
+                    <option value="Creative arts and design">Creative arts and design</option>
+                    <option value="Energy and utilities">Energy and utilities</option>
+                    <option value="Engineering and manufacturing">Engineering and manufacturing</option>
+                    <option value="Environment and agriculture">Environment and agriculture</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Information technology">Information technology</option>
+                    <option value="Law">Law</option>
+                    <option value="Law enforcement and security">Law enforcement and security</option>
+                    <option value="Leisure, sport and tourism">Leisure, sport and tourism</option>
+                    <option value="Marketing, advertising and PR">Marketing, advertising and PR</option>
+                    <option value="Media and internet">Media and internet</option>
+                    <option value="Property and construction">Property and construction</option>
+                    <option value="Public services and admin">Public services and admin</option>
+                    <option value="Recruitment and HR">Recruitment and HR</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Science and pharmaceuticals">Science and pharmaceuticals</option>
+                    <option value="Social care">Social care</option>
+                    <option value="Teaching and education">Teaching and education</option>
+                    <option value="Transport and logistics">Transport and logistics</option>
+
+                </select>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label text-left" for="purpose">Job purpose</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+                <div id="searchfield">
+                    <form><input type="text" class="purpose form-control biginput" maxLength="200" placeholder="press Enter after each point" ></form>
+                </div>
+            
+                <p class="text-left">
+                    {{#each reverseArrOrder purpose}}
+                        <i class="fa fa-circle"></i> {{value}}
+                        <a class="removePurposeItem"><i class="fa fa-times"></i></a> <br />
+                    {{/each}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="skillsAndReq">Skills and Requirements</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+
+                <div id="searchfield">
+                    <form><input type="text" class="skillsAndReq form-control biginput" maxLength="200" placeholder="press Enter after each point" ></form>
+                </div>
+            
+                <div class="text-left">
+                    
+                    {{#each reverseArrOrder skillsAndReq}}
+                            <i class="fa fa-circle"></i> {{this.value}}
+                                <a class="removeSkillnReq"><i class="fa fa-times"></i></a> <br />
+                    {{/each}}
+                </div>
+            </div> <!-- / content -->
+
+        </div>
+    </div>
+
+
+    <!-- 5 tags -->
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="tags">Tags</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+             This is where you describe the position, particular experiences and skill sets required. 
+             Add up to 5 single words that will help candidates get a snapshot of the role while searching.
+
+                <div id="searchfield">
+                    <form><input type="text" class="tags form-control biginput" maxLength="15"></form>
+                </div>
+            
+                {{#each tags}}
+                    <div class="tabbed-clear">
+                        {{this.value}}
+                        <a class="removeTag"><i class="fa fa-times"></i></a>
+                    </div>
+                {{/each}}
+            </div> <!-- / content -->
+
+        </div>
+    </div>
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="languages">Conversational Language(s)</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+
+                <div id="searchfield">
+                    <form><input type="text" name="languages" class="languages form-control biginput"></form>
+                </div><!-- @end #searchfield -->
+              
+
+                    <p class="text-center">
+                    {{#each languages}}
+                    <a href="#">{{name}} <i class="deleteLanguage fa fa-times"></i></a>
+                    {{/each}}
+                    </p>
+
+            </div> <!-- / content -->
+          
+        </div>
+    </div>
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="amount">Salary Amount</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+                <div id="searchfield">
+                    <form><input class="amount form-control biginput" type="text" /></form>
+                </div>
+
+                <p class="text-center">{{amount}}</p>
+
+            </div>
+
+        </div>
+    </div>
+
+     <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="currencyCode">Currency</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+
+                <div id="searchfield">
+                    <form><input type="text" name="currency" class="currency biginput"></form>
+                </div><!-- @end #searchfield -->
+              
+                <div class="text-center">
+                        <strong>Currency Name:</strong> {{currency.name}}<br> <strong>Symbol:</strong> {{currency.code}}
+                </div>
+
+            </div>
+          
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="companyAddress">Place of work</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+                <button type="button" class="companyAddress btn btn-default">company address</button>
+                <button type="button" class="remotely btn btn-default">remotely</button>
+                <strong>{{location}}</strong>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group form-group-md">
+        <label class="col-sm-2 control-label" for="contract-arr">Contract Span</label>
+        <div class="col-sm-10">
+
+            <div class="content">
+                <button type="button" class="fixed btn btn-default"> fixed </button>
+                <button type="button" class="sustained btn btn-default">sustained</button>
+                <strong>{{contract_term}}</strong>
+            </div>
+
+        </div>
+    </div>
+</form><br/>
+
+<h4>Scope</h4>
+<p>
+Here, you get to gather further information to gauge a candidate's suitability, once you've accepted their interest in your advertised position.
+ </p>
+
+<div class="scope-div faint-text-italised">
+    <h4>Example:</h4>
+    <textarea class="form-control" rows="3"  name="question" value="What can you tell us about your experiences when working in small teams? (move the slider below to set the maximum number of words desired for the response)" disabled></textarea>
+    
+    <input type="range" min="50" max="1000" step="50"  value="150"  class="faint-text" disabled>
+    <div>
+    150 Words
+    </div>
+</div> 
+<br />
+
+<div>
+{{> scope}}
+</div>
+
+<div class="safety-space">
+
+{{#if errorJobPostMessages}}
+<div class="list-errors">
+  <div class="alert alert-warning fade in">{{#each errorJobPostMessages}} {{this}} {{/each}}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button></div>
+</div>
+{{/if}}
+<br />
+
+<small> The publication will expire after 45 days</small>
+<button type="button" id="submitJobPost" class="btn btn-lg btn-default btn-block">PUBLISH</button>
+
+</div>
+
+</template>
+
+
+
+<template name="scope">
+
+{{#each scopeArray}}
+<div id='scopeArea'>
+    <textarea class="form-control" rows="3" name="question" value="{{text}}" maxLength="250"></textarea>
+
+    <input type="range" min="50" max="1000" step="50" value="{{maxWords}}" name="slider">
+
+    <h5 class="faint-text">{{maxWords}} words <button type="button" class="removeScope btn btn-default"><i class="fa fa-minus"></i></button></h5>
+
+</div>
+{{/each}}
+<button type="button" class="addScope btn btn-default"><i class="fa fa-plus"></i> ADD SCOPE</button>
+
+
+</template>
+
+
+

@@ -1,0 +1,20 @@
+<template name="feedbackRecieved">
+
+{{#if Template.subscriptionsReady}}
+
+{{#each feedback}}
+<div class="row">
+	<h5>{{userType}} : {{userId}} <small>{{formatTimeAgo createdAt false}}</small> <br >
+	{{email}}</h5>
+
+	<p>{{text}}</p>
+	<button id="deleteFeedback" type="button" class="btn btn-link btn-sm"><i class="fa fa-times"></i> delete</button>
+	<hr>
+</div>
+
+{{/each}}
+
+{{else}}
+Loading...
+{{/if}}
+</template>

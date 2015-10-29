@@ -1,0 +1,129 @@
+.row-offcanvas {
+  height:100%;
+}
+
+#sidebar {
+  width: inherit;
+  min-width: 150px;
+  max-width: 150px;
+  background-color: #c3bba3;
+  float: left;
+  min-height: 500px;
+  position:relative;
+  overflow-y:auto;
+  overflow-x:hidden;
+  border: none;
+  /*margin: 0px;
+  padding: 0px;*/
+}
+
+.inpelo-attention-font {
+  color: #1585b8;
+}
+
+/*SIZING and default colours*/
+li.greet-items-default {
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+}
+
+li.greet-items-default > a {
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border-radius: 0px;
+  text-decoration: none;
+  color: #555555;
+}
+
+li.greet-items-default > a:hover {
+  background-color: transparent;
+}
+
+li.greet-items-default > a:focus,
+li.greet-items-default > a:focus:active {
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border-radius: 0px;
+  text-decoration: none;
+  background-color: #faf6e9;
+}
+/* / END SIZING*/
+
+/*for interests*/
+li.greet-items-default > a.inpelo-success-background {
+  background-color: #15b89a;
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border-radius: 0px;
+  color: #767676;
+}
+
+
+li.greet-items-default > a.inpelo-dark-background {
+  background-color: #062737;
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border-radius: 0px;
+  color: #767676;
+}
+/* / for interests*/
+
+
+.selected-greet {
+  background-color: #faf6e9 !important;
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border: none;
+  border-radius: 0px;
+}
+
+/*.selected-greet, .selected-greet:hover, .selected-greet:active, .selected-greet:focus:active {
+  background-color: #faf6e9 !important;
+  height: 30px;
+  width: 150px;
+  margin: 0px;
+  border: none;
+  border-radius: 0px;
+}*/
+
+
+
+
+#main {
+  height:100%;
+  overflow:auto;
+  margin-top: 10px;
+}
+/*
+ * off Canvas sidebar
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    width:calc(100% + 150px);
+  }
+    
+  .row-offcanvas-left
+  {
+    left: -150px;
+  }
+
+  .row-offcanvas-left.active {
+    left: 0;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+  }
+}

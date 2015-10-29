@@ -1,0 +1,74 @@
+<template name="join">
+<div class="container">
+
+  <div class="row joinType-buttons">
+    <div class="col-sm-12">
+      
+        <div id="error-messages" class="error">
+        Please review the required fields:
+        </div>
+
+        <button type="button" id="candidate" class="btn btn-default btn-lg btn-joinType" value="" >Candidate</button>
+
+        <button type="button" id="company" class="btn btn-default btn-lg btn-joinType" value="" >Company<br /> <i class="small-notif">FREE job advertising</i></button>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-8">
+      <form class="form-join">
+
+        <div class="form-group">
+          <label for="input_1" class="requried" >First Name</label>
+          <input type="text" class="form-control" id="input_1">
+        </div>
+
+        <div class="form-group">
+          <label for="input_2" class="requried">Last Name</label>
+          <input type="text" class="form-control" id="input_2">
+        </div>
+
+        <div class="form-group">
+          <label for="input_3" class="requried">Email</label>
+          <input type="email" class="form-control" id="input_3">
+        </div>
+
+        <div class="form-group">
+          <label for="input_4" class="requried">Password</label>
+          <input type="password" class="form-control" id="input_4" placeholder="6 charactors minimum">
+        </div>
+
+        {{#if errorJoinMessages}}
+          <div class="list-errors">
+            <div class="alert alert-warning fade in">{{errorJoinMessages}}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+
+            </button></div>
+          </div>
+        {{/if}}
+
+        <button type="submit" id="joinIneplo" class="btn btn-lg btn-default btn-block">Join</button>
+
+        <div class="login-links"> 
+          <a href="{{pathFor route = 'login'}}">Already have an account?  <strong>log in</strong></a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</template>
+
+
+
+
+
+
+
+
+
+      
+      
+       
+

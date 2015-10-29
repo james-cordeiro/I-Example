@@ -1,0 +1,85 @@
+<template name="personalEdit">
+<div class="container">
+    <form class="form-horizontal" role="form" id="personalEditing">
+    {{#with currentUser.profile}}
+
+    	<div class="form-group form-group-md" >
+        	<label class="col-sm-2 control-label" for="institute" >First Name</label>
+        	
+            <div class="col-sm-10">
+
+
+                    <input class="form-control" id="firstName" type="text" maxlength="25" value="{{firstName}}"/>
+
+
+            </div>
+        </div>
+
+        <div class="form-group form-group-md" >
+        	<label class="col-sm-2 control-label" for="institute" >Last Name</label>
+        	
+            <div class="col-sm-10">
+
+
+                    <input class="form-control" id="lastName" type="text" maxlength="25" value="{{lastName}}"/>
+
+
+            </div>
+        </div>
+
+
+    	<div class="form-group">
+
+    		<div class="content">
+                <h5 class="text-center"><strong>Country that you currently live</strong> (select from menu)<small></small></h5>
+                
+                
+
+                    <div id="searchfield">
+                        <form><input type="text" class="biginput" id="country" placeholder="{{myProfile.location.countryName}}, {{myProfile.location.countryCode}}"></form>
+                    </div><!-- @end #searchfield -->
+                        <p class="text-center">
+                        {{myProfile.location.countryName}} <br />
+                        {{myProfile.location.countryCode}}
+                        </p>
+
+                </div> <!-- / content -->
+        </div>
+
+
+        <div class="form-group">
+    	    <div class="content">
+    	    <h5 class="text-center"><strong>City</strong></h5>
+    	      
+    	      <input type="text" class="form-control biginput" id="city" value="{{myProfile.location.location.city}}" maxlength="20">
+    	    </div> <!-- / content -->
+      </div>
+
+
+        <div class="form-group form-group-md">
+            <h5 class="text-center"><strong>Specialities</strong></h5>
+                <div class="content">This is where you describe core experiences and skill sets. Add up to 5 single words that will help companies get a snapshot of your profile.
+
+                    <div id="searchfield">
+                        <form><input type="text" class="speciality form-control biginput" maxLength="15" placeholder="press Enter after each word"></form>
+                    </div>
+                    <div class="text-center">
+                        {{#each speciality}}
+                            <div class="tabbed-grey">
+                                {{this}}<a class="removeSpeciality"> <i class="fa fa-times"></i></a> 
+                            </div>
+                        {{/each}}
+                    </div>
+                </div> <!-- / content -->
+        </div>
+
+
+
+
+    <button type="button" class="savePersonalInfo btn btn-link"><i class="fa fa-check"></i> DONE</button>
+
+
+    {{/with}}
+    </form>
+</div>
+</template>

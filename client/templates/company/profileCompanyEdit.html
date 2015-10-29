@@ -1,0 +1,83 @@
+<template name="profileCompanyEdit">
+<div class="container">
+{{#if currentUser}}
+
+  <form>
+  {{#with currentUser.profile.company}}
+    <div class="form-group">
+
+      <div class="content">
+      <h4 class="text-center"><strong>company name</strong></h4>
+        
+        <input type="text" class="form-control biginput" id="name" placeholder=" Company Name" value="{{name}}" maxlength="30">
+      </div> <!-- / content -->
+
+    </div>
+
+
+      <div class="form-group">
+
+              <div class="content">
+              <h4 class="text-center"><strong>Country</strong> (select from menu)<small></small></h4>
+              
+              
+
+                  <div id="searchfield">
+                      <form><input type="text" name="country" class="biginput" id="country" placeholder="{{location.countryName}}, {{location.countryCode}}"></form>
+                  </div><!-- @end #searchfield -->
+                      <p class="text-center">
+                      {{location.countryName}} <br />
+                      {{location.countryCode}}
+                      </p>
+
+              </div> <!-- / content -->
+      </div>
+
+
+
+    <div class="form-group">
+
+      <div class="content">
+      <h4 class="text-center"><strong>City</strong></h4>
+        
+        <input type="text" class="form-control biginput" id="city" value="{{location.city}}" maxlength="20">
+      </div> <!-- / content -->
+
+    </div>
+
+
+      <div class="form-group">
+
+      <div class="content">
+      <h4 class="text-center"><strong>Street</strong></h4>
+        
+        <input type="text" class="form-control biginput" id="street" value="{{location.street}}" maxlength="20">
+      </div> <!-- / content -->
+
+    </div>
+
+
+
+    <!-- <div id="map-canvas"></div> -->
+
+    <div class="form-group">
+
+    <div class="content">
+      <h4 class="text-center"><strong>Description</strong></h4>
+
+
+        <textarea rows="6" class="form-control" id="description" placeholder="Describe the company's purpose" value="{{description}}" maxlength="1000"></textarea>
+      </div>
+    </div>
+
+
+    <div>I agree that the information provided above is correct and I am a representatve of the company stated.
+    </div>
+
+    <button type="button" class="btn btn-default btn-sm" id="finsihedEditing" >DONE</button>
+    {{/with}}
+  </form>
+
+{{/if}}
+</div>
+</template>

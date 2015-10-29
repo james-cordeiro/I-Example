@@ -1,0 +1,16 @@
+<template name="home">  
+{{#if Template.subscriptionsReady}}
+
+<div class="container">
+
+	<div class="headline text-center">
+		<sup><i class="fa fa-quote-left"></i></sup> One Click Appliction Direct To Employers <sup><i class="fa fa-quote-right"></i></sup>    
+	</div
+	>
+	{{> Template.dynamic template='jobList' data=allJobs}}
+</div>
+
+{{else}}
+Loading...
+{{/if}}
+</template>

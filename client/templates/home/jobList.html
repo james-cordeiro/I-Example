@@ -1,0 +1,108 @@
+<template name="jobList">
+{{#each allJobs}}
+
+	{{> jobItem}}
+
+{{/each}}
+</template>
+
+
+
+<template name="jobItem"> 
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="jobSpec">
+    {{> jobCard}}
+
+    <h4 class="panel-title">
+
+        <button data-toggle="collapse" data-target="#{{_id}}" aria-expanded="true" aria-controls="collapseOne" type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> MORE</button>
+
+        </h4>
+
+    </div>
+
+    <div id="{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="jobSpec">
+      <div class="panel-body">
+
+      <h4 class="inpelo-color">Purpose</h4>
+
+        {{#each purpose}}
+          <div class="skillsAndReq-list">
+              <i class="fa fa-circle"></i> {{value}}
+          </div>
+        {{/each}}
+
+      
+      <h4 class="inpelo-color" >Skills and Requirements</h4>
+      {{#each skillsAndReq}}
+        <div class="skillsAndReq-list">
+            <i class="fa fa-circle"></i> {{value}}
+        </div>
+      {{/each}}
+      <br />
+
+      <h4 class="inpelo-color" >Conversational language</h4>
+        
+        {{#each languages}}
+        <div class="tabbed-grey">
+          {{name}}
+        </div>
+        {{/each}}
+
+      <br />
+      <br />
+      {{amount}} {{currency.code}} {{contractTerms contractTerm}}
+      <br />
+      <br />
+      {{#if currentUser}}
+        {{> foldOrGreet}}
+      {{else}}
+        {{> foldOrGreetNotLoggedIn}}
+      {{/if}}
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="jobCard">
+	<div class="row">
+
+		<div class="col-lg-8 col-md-8 col-sm-9 col-xs-8">
+			<h4 class="inpelo-color"><strong>{{title}}</strong></h4>
+      <a href="{{pathFor 'companyView'}}"><h5 id="companyName">{{companyName}} <i class="fa fa-circle"></i> {{companyLocation.city}}, {{companyLocation.countryName}}</h5></a>
+
+      {{#each tags}}
+        <div class="tabbed">
+        {{value}}
+        </div>
+      {{/each}}
+
+		</div>
+
+		<div class="col-lg-4 col-md-4 col-sm-3 col-xs-4 text-right faint-text">
+		{{#if currentUser}}
+			<button id="unsubscribeUserFromJob" type="button" class="btn btn-default btn-sm"><i class="fa fa-times"></i> FOLD</button>
+		{{/if}}
+    <br />
+    <br />
+    {{formatTimeAgo jobCreatedAt false}}
+
+		</div>
+
+	</div>
+</template>
+
+
+
+<template name="foldOrGreet">
+	<button id="unsubscribeUserFromJob" type="button" class="btn btn-default btn-sm"><i class="fa fa-times"></i> FOLD</button>
+	<button id="greet" type="button" class="btn btn-default btn-sm"><i class="fa fa-check"></i> GREET</button>
+</template>
+
+
+<template name="foldOrGreetNotLoggedIn">
+  <button id="unsubscribeNotLoggedIn" type="button" class="btn btn-default btn-sm"><i class="fa fa-times"></i> FOLD</button>
+  <button id="greetNotLoggedIn" type="button" class="btn btn-default btn-sm"><i class="fa fa-check"></i> GREET</button>
+</template>

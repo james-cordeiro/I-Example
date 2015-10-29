@@ -1,0 +1,243 @@
+.main { /*yield region*/
+    margin-top: 60px;
+}
+
+html, body {
+   height: 100%;
+   font-family: verdana,arial,sans-serif;
+   font-size: 12px;
+   color:#555555;
+   background-color: #FAF6E9;
+   overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+footer {
+  padding: 30px 0;
+}
+a, a:hover {
+	color: inherit;
+}
+
+li {
+	border-radius: 0px;
+}
+.headline {
+	font-size: 1.8em;
+	font-weight: bold;
+}
+
+.alert-warning {
+	color: red;
+}
+
+.fa-more, .fa-times, .fa-plus, .fa-check, .fa-pencil, .fa-envelope, .fa-envelope-o, .fa-quote-left, .fa-quote-right {
+	color: #15B89A;
+}
+
+.fa-circle {
+	color:  #e1ddd1;
+}
+
+.fa:hover, .fa:focus, .fa:active, .fa:focus:active {
+	/*color: #8adbcc;*/
+	opacity: 0.6;
+}
+
+p {
+	font-size: 1.1em;
+}
+/*************** THEMED TYPOGRPHY ***************/
+.ellipsis { 
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.inpelo-color {
+	color: #ecc33f;
+	/*color: #15B89A;*/
+}
+
+.fieldBlock {
+	display: inline-block;
+}
+
+
+
+/*************** / THEMED TYPOGRPHY ***************/
+
+.tabbed {
+	padding: 2px 4px 2px 4px;
+	background-color: #15B89A;
+	display: inline-block;
+	margin-top: 3px;
+	margin-bottom: 7px;
+	margin-right: 7px;
+}
+
+.tabbed-grey {
+	padding: 2px 4px 2px 4px;
+	background-color: #e1ddd1;
+	display: inline-block;
+	margin-top: 3px;
+	margin-bottom: 7px;
+	margin-right: 7px;
+	margin-right: 7px;
+}
+
+.tabbed-clear {
+	padding: 2px 4px 2px 4px;
+	display: inline-block;
+	margin-top: 3px;
+	margin-bottom: 7px;
+	margin-right: 7px;
+}
+
+.reserved-space {
+	display: inline-block;
+	min-height: 25px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.error, .required{
+	color: red;
+}
+
+:disabled {
+     cursor: default !important;
+}
+
+.faint-text {
+	color:  #8d959b;
+	font-size: 1.1em
+}
+
+.faint-text-italised {
+	color:  #8d959b;
+	font-style: italic;
+}
+
+.fill-1 {
+	background-color: #f1f1f1;
+}
+
+.safety-space {
+	padding-top: 40px;
+}
+
+button.btn, button.btn:hover, button.btn:focus, button.btn:active, button.btn:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0px;
+  background-color: #e1ddd1;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  text-decoration: none;
+}
+
+button.btn-joinType, button.btn-joinType:focus, button.btn-joinType:active, button.btn-joinType:focus:active {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	outline: none;
+	width: 250px;
+	height: 70px;
+	text-decoration: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.small-notif {
+	font-size: 0.5em;
+}
+
+.joinType-buttons {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.spaced-div {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.scope-div {
+	margin-top: 15px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	background-color: #e7e3da;
+}
+
+hr {
+    border: none;
+    margin-top: 0px;
+    height: 1px;
+    background-color: #e1ddd1;
+}
+/********BOOTSTRAP OVERIDES********/
+.panel {
+	border: none;
+	margin-top: 15px;
+}
+
+.panel-default >.panel-heading {
+    background-color: #FFF;
+    border: none;
+}
+
+
+.panel-default >.panel-collapse {
+    background-color: #FAFAFA;
+    border: none;
+}
+
+
+/******** / BOOTSTRAP OVERIDES********/
+
+
+.space-below {
+	margin-bottom: 40px;
+}
+
+textarea{ 
+	background-color: #fdfbf6 !important;
+	outline:0px !important;
+    -webkit-appearance:none;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	font-size: 1.2em;
+	border-radius: 0px;
+}
+
+input[type=text], input[type=email], input[type=password], select {
+	background-color: #fdfbf6 !important;
+	outline:0px !important;
+    -webkit-appearance:none;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	font-size: 1.2em;
+	border-radius: 0px;
+}
+
+.jobView-background {
+	background-color: #efe1b7;
+	/*margin: 10px;*/
+}
+
+.transparent{
+	background-color: transparent;
+	 border: none;
+}
+
+
+

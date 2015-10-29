@@ -1,0 +1,112 @@
+<template name="profilePageCandidate">
+{{#if Template.subscriptionsReady}}
+
+<div class="container">
+	{{#with currentUser}}
+		{{> profileCandidateMapped}}
+	{{/with}}
+</div>
+
+{{else}}
+	Loading subs...
+{{/if}}
+</template>
+
+
+
+<template name="profileCandidateMapped">
+	<div class="text-center">
+	<i class="fa fa-pencil fa-2x" id="personalEdit"></i>
+		{{> personalAndSpeciality}}
+	</div>
+
+	<div class="content">
+		<h5>Positions <i class="fa fa-pencil" id="positionsEdit"></i></h5> 
+		{{> positions}}
+	</div>
+
+	<div class="content">
+		<h5>Education <i class="fa fa-pencil" id="educationsEdit"></i></h5>
+		{{> educations}}
+	</div>
+
+	<div class="content">
+		<h5>Languages <i class="fa fa-pencil" id="languagesEdit"></i></h5>
+		{{> languages}}
+	</div>
+
+	<div class="content">
+		<h5>Books <i class="fa fa-pencil" id="booksEdit"></i></h5>
+		{{> books}}
+	</div>
+
+</template>
+
+
+
+
+
+
+<template name="personalAndSpeciality">
+	<h4>{{profile.firstName}} {{profile.lastName}}</h4>
+	<h5 class="faint-text">
+	{{profile.myProfile.location.city}} | 
+	{{profile.myProfile.location.countryName}} | 
+	{{profile.myProfile.location.countryCode}}</h5>
+
+	{{#each profile.myProfile.speciality}}
+		<div class="tabbed">{{this}}</div>
+	{{/each}}
+</template>
+
+<template name="positions">
+{{#each profile.myProfile.positions}}
+	<h5 class="inpelo-color">{{title}} - {{company}} <small>{{formatMonth this.dateStart.month}} {{this.dateStart.year}} to {{formatMonth this.dateEnd.month}} {{this.dateEnd.year}}</small></h5>
+{{sector}}<br />
+
+    {{#each summary}}
+                <i class="fa fa-circle"></i> {{value}}<br />
+    {{/each}}
+
+    {{#each tags}}
+    <div class="tabbed-grey">
+		{{value}}
+	</div>
+	{{/each}}
+{{/each}}
+</template>
+
+
+<template name="educations">
+{{#each profile.myProfile.educations}}
+	<h5 class="inpelo-color">{{institute}} <small>{{yearStart}} to {{yearEnd}}</small></h5>
+{{scopeOfStudy}}<br />
+
+		{{#each summary}}
+			<i class="fa fa-circle"></i> {{value}}<br />
+		{{/each}}
+{{/each}}
+
+</template>
+
+
+<template name="languages">
+	{{#each profile.myProfile.languages}}
+	<div class="tabbed-grey">
+		{{name}} 
+	</div>
+	{{/each}}
+</template>
+
+
+<template name="books">
+	{{#each booksHelper}}
+		{{> bookItem}}
+	{{/each}}
+</template>
+
+<template name="bookItem">
+	<a href="{{bookPage}}"><img src="{{imgLg}}" data-toggle="tooltip" data-placement="top" title="{{title}}"></a>
+</template>
+
+
